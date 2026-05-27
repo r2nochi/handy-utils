@@ -1,7 +1,7 @@
 'use strict';
 
 const assert = require('assert');
-const { slugify, clamp, formatBytes, truncate } = require('../src');
+const { slugify, clamp, formatBytes, truncate, capitalize } = require('../src');
 
 assert.strictEqual(slugify('Hola Mundo!'), 'hola-mundo');
 assert.strictEqual(slugify('  Árboles y Ríos  '), 'arboles-y-rios');
@@ -15,5 +15,8 @@ assert.strictEqual(formatBytes(1048576), '1 MB');
 
 assert.strictEqual(truncate('hola', 10), 'hola');
 assert.strictEqual(truncate('hola mundo', 6), 'hola …');
+
+assert.strictEqual(capitalize('hola mundo'), 'Hola Mundo');
+assert.strictEqual(capitalize('JAVA script'), 'Java Script');
 
 console.log('Todos los tests pasaron ✔');

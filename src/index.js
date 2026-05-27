@@ -54,4 +54,15 @@ function truncate(text, max, suffix = '…') {
   return str.slice(0, Math.max(0, max - suffix.length)) + suffix;
 }
 
-module.exports = { slugify, clamp, formatBytes, truncate };
+/**
+ * Pone en mayúscula la primera letra de cada palabra.
+ * @param {string} text
+ * @returns {string}
+ */
+function capitalize(text) {
+  return String(text)
+    .toLowerCase()
+    .replace(/\b\p{L}/gu, (ch) => ch.toUpperCase());
+}
+
+module.exports = { slugify, clamp, formatBytes, truncate, capitalize };
