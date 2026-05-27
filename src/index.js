@@ -41,4 +41,17 @@ function formatBytes(bytes, decimals = 1) {
   return `${parseFloat(value.toFixed(decimals))} ${units[i]}`;
 }
 
-module.exports = { slugify, clamp, formatBytes };
+/**
+ * Trunca un texto a una longitud máxima, añadiendo un sufijo si se recorta.
+ * @param {string} text
+ * @param {number} max
+ * @param {string} [suffix='…']
+ * @returns {string}
+ */
+function truncate(text, max, suffix = '…') {
+  const str = String(text);
+  if (str.length <= max) return str;
+  return str.slice(0, Math.max(0, max - suffix.length)) + suffix;
+}
+
+module.exports = { slugify, clamp, formatBytes, truncate };
